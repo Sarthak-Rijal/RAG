@@ -1,4 +1,4 @@
-from src.ingestion.loader import Parser
+from src.ingestion.pdfParser import Parser
 
 import json
 import os
@@ -15,12 +15,6 @@ def main():
     parser = Parser()
     documents = parser.load_from_directory(DATA_DIR)
 
-    print(f"Loaded {len(documents)} documents")
-    for doc in documents:
-        print(f"Document: {doc['metadata']['file_name']}")
-        print(f"Content length: {len(doc['content'])} characters")
-        print("---")
-    
     # processor = TextProcessor()
     # chunker = TextChunker(chunk_size=config['chunk_size'], 
     #                       chunk_overlap=config['chunk_overlap'])

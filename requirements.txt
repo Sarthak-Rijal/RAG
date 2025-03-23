@@ -25,5 +25,14 @@ python-dotenv>=1.0.0  # For managing environment variables
 # PyMuPDF
 PyMuPDF>=1.22.0
 
-# Add Anthropic client for LlamaParse
-anthropic>=0.7.0
+# Text parsing libraries
+openparse==0.7.0
+
+# PyTorch and related libraries for openparse
+torch>=1.10.0
+torchvision>=0.11.0
+transformers>=4.11.0
+
+# Visualization
+streamlit>=1.22.0
+pandas>=1.5.0
