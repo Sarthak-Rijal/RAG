@@ -1,0 +1,29 @@
+# Core libraries
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-core>=0.1.10
+
+# Vector database
+faiss-cpu>=1.7.4
+chromadb>=0.4.18  # Optional alternative to FAISS
+
+# Embedding models
+sentence-transformers>=2.2.2
+
+# Document processing
+pypdf>=3.17.1
+unstructured>=0.10.30
+nltk>=3.8.1
+
+# LLM connections
+langchain-openai>=0.0.2  # If using OpenAI
+ollama>=0.1.5  # If using local models
+
+# Utilities
+python-dotenv>=1.0.0  # For managing environment variables
+
+# PyMuPDF
+PyMuPDF>=1.22.0
+
+# Add Anthropic client for LlamaParse
+anthropic>=0.7.0
