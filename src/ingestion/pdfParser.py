@@ -51,7 +51,7 @@ class Parser:
 
         pdf.export_with_bboxes(
             parsed_pdf.nodes,
-            output_pdf="output.pdf"
+            output_pdf="output2.pdf"
         )
 
         return parsed_pdf
