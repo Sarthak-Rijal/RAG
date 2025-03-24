@@ -15,6 +15,7 @@ def main():
     parser = Parser()
     documents = parser.load_from_directory(DATA_DIR)
 
+
     # processor = TextProcessor()
     # chunker = TextChunker(chunk_size=config['chunk_size'], 
     #                       chunk_overlap=config['chunk_overlap'])
