@@ -34,7 +34,7 @@ class Parser:
                 if "_output.pdf" in str(pdf_path):
                     continue
                 
-                # First extract images and figures to avoid memory issues
+                # Extraction happens here first
                 self.extract_figures_and_tables(pdf_path)
                 self.extract_images(file_path=pdf_path)
                 
@@ -43,11 +43,9 @@ class Parser:
                 
                 # Then parse with OpenParse
                 try:
-                    parsed_content = self._parse_pdf(pdf_path)
-                    
-                    print(parsed_content.model_dump())
-                    
+                    parsed_content = self._parse_pdf(pdf_path)                    
                     documents.append(parsed_content)
+                    
                 except Exception as e:
                     logging.error(f"Error in OpenParse processing for {pdf_path}: {str(e)}")
                 
@@ -59,14 +57,10 @@ class Parser:
     
     def _parse_pdf(self, file_path: Path) -> Dict[str, Any]:
         """Load a PDF file and extract text and metadata."""
-        # First extract images to avoid memory conflicts
-        self.extract_figures_and_tables(file_path)
-        self.extract_images(file_path)
-        
         # Force garbage collection
         gc.collect()
 
-        # intialize the semantic pipeline
+        # initialize the semantic pipeline
         semantic_pipeline = processing.SemanticIngestionPipeline(
             openai_api_key=os.environ.get("OPEN_AI_KEY"),
             model="text-embedding-3-large",
