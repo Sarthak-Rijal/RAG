@@ -26,16 +26,9 @@ def main():
     print(f"Loaded model: {model.model_info['name']}")
     print(f"Provider: {model.model_info['provider']}")
     
-    # Text-only generation
-    prompt = "What are three innovative applications of multimodal AI in healthcare?"
-    print("\nGenerating text response...\n")
-    response = model.generate_text(prompt)
-    print(f"Prompt: {prompt}")
-    print(f"Response: {response}")
-    
     # Multimodal generation (if image paths provided)
     image_paths = [
-        "/home/sarthak/Documents/workspace/simpleRAG/extracted_images/page7_img1.png"
+        "/home/sarthak/Documents/workspace/simpleRAG/extracted_images/tableTest.png"
     ]
     
     if image_paths:
