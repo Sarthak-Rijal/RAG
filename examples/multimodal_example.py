@@ -1,6 +1,7 @@
 import os
 import sys
 from pathlib import Path
+from config.config import API_KEYS
 
 # Add src to Python path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -9,7 +10,7 @@ from src.genai.factory import ModelFactory
 
 def main():
     # Get API key from environment
-    api_key = os.environ.get("GOOGLE_API_KEY")
+    api_key = API_KEYS["GOOGLE_API_KEY"]
     
     if not api_key:
         print("Please set GOOGLE_API_KEY environment variable")

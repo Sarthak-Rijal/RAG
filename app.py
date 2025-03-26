@@ -1,8 +1,11 @@
-from src.ingestion.pdfParser import Parser
+from src.ingestion.parser import Parser
+from src.embedding.GeminiEmbeddingClient import GeminiEmbeddingClient
+from llama_index.core import Document
 
 import json
 import os
 from dotenv import load_dotenv
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -11,38 +14,25 @@ DATA_DIR = "./data/"
 
 
 def main():
-    # Initialize components
+
     parser = Parser()
     documents = parser.load_from_directory(DATA_DIR)
 
+    # components
+    embeddingClient = GeminiEmbeddingClient(documents)
 
-    # processor = TextProcessor()
-    # chunker = TextChunker(chunk_size=config['chunk_size'], 
-    #                       chunk_overlap=config['chunk_overlap'])
-    # embedder = Embedder(model_name=config['embedding_model'])
-    # vector_store = VectorStore(connection_string=config['vector_db_connection'])
-    # retriever = Retriever(vector_store=vector_store, embedder=embedder)
-    # prompt_builder = PromptBuilder()
-    # llm = LLMInterface(model_name=config['llm_model'], 
-    #                    api_key=config['api_key'])
-    
+    index = embeddingClient.getIndex()
+    query_engine = index.as_query_engine()
 
+    print("--------------------------------\n")
+    print("Setup complete\n")
+    print("--------------------------------\n\n")
 
-    # # Example RAG pipeline
-    # def process_query(query):
-    #     # Retrieve relevant documents
-    #     documents = retriever.retrieve(query, top_k=config['retrieval_top_k'])
-        
-    #     # Build prompt with context
-    #     prompt = prompt_builder.build_prompt(query, documents)
-        
-    #     # Generate response
-    #     response = llm.generate(prompt)
-        
-    #     return response
-    
-    # Start API or CLI interface
-    # ...
+    while True:
+        prompt = input("Enter a query: ")
+        response = query_engine.query(prompt)
+        print(response)
+        print("\n\n")
 
 if __name__ == "__main__":
     main() 

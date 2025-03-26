@@ -36,3 +36,15 @@ transformers>=4.11.0
 # Visualization
 streamlit>=1.22.0
 pandas>=1.5.0
+
+google-generativeai==0.6.0
+
+# New additions from the code block
+llama-index-llms-gemini>=0.1.2
+llama-index-vector-stores-qdrant>=0.1.1
+llama-index-embeddings-gemini
+qdrant-client
+llama-index
+tiktoken
+Pillow
+openai
